@@ -1,6 +1,10 @@
 # mot-application
 
-> a mot application
+> 毕设项目界面，使用Electron-Vue框架及ElementUI框架，采用前后端分离设计模式  
+> Electron-Vue: 1.0.6  
+> Vue: 2.5.16  
+> ElementUI: 2.15.8  
+> Axios: 0.18.0  
 
 #### Build Setup
 
