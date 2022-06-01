@@ -48,6 +48,7 @@
         <el-form-item>
           <el-button type="primary" @click="submitFrameTrackForm">开始跟踪</el-button>
           <el-button><i class="el-icon-refresh"></i>重置</el-button>
+          <el-button @click="openOutputFolder" v-if="this.frame_track_form.output_dir">打开输出文件夹</el-button>
         </el-form-item>
       </el-form>
     </el-row>
@@ -65,7 +66,7 @@
 </template>
 
 <script>
-import {remote} from "electron";
+import {remote, shell} from "electron";
 
 const baseURL = 'http://localhost:8090';
 function sleep(ms) {
@@ -144,6 +145,11 @@ export default {
       let outputPath = this.choseDirectoryPathInDialog();
       if (outputPath !== '')
         this.frame_track_form.output_dir = outputPath;
+    },
+    //打开输出文件夹
+    openOutputFolder(){
+      const shell = require('electron').shell
+      shell.openItem(this.frame_track_form.output_dir);
     },
     /*
     * 以下为工具方法

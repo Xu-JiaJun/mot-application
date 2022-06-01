@@ -48,7 +48,7 @@
         <el-form-item>
           <el-button type="primary" @click="submitVideoTrackForm">开始跟踪</el-button>
           <el-button @click="resetVideoTrackForm"><i class="el-icon-refresh"></i>重置</el-button>
-          <el-button @click="openOutputFolder" v-if="open_folder_vis">打开输出文件夹</el-button>
+          <el-button @click="openOutputFolder" v-if="this.video_track_form.output_dir">打开输出文件夹</el-button>
         </el-form-item>
       </el-form>
     </el-row>
@@ -81,7 +81,6 @@ export default {
     return{
       video_track_param: { suid:'', track_logs:[] },
       video_track_form: { input_dir: '', output_dir: '', thres: 0.6, gen_video: false },
-      open_folder_vis: false,
     }
   },
   methods:{
@@ -100,7 +99,6 @@ export default {
           .then(response=>{
             if (response.data.code === 0){
               self.$message.success(`开始跟踪${inputDir}!`);
-              self.open_folder_vis = true;
               self.getVideoTrackLog(response.data['suid']);
             }
             else{
