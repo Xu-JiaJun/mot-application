@@ -117,7 +117,7 @@ export default {
           self.frame_track_param.track_logs = [];
           for (let r_index in logs){
             self.frame_track_param.track_logs.unshift(logs[r_index]);
-            if (logs[r_index] === 'End'){
+            if (logs[r_index].contains('End')){
               self.$message.success('跟踪完成!');
               return;
             }
