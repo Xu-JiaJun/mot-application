@@ -93,6 +93,8 @@ export default {
       let thres = this.frame_track_form.thres;
       let gen_video = this.frame_track_form.gen_video;
       let self = this;
+      this.$message.info(`开始生成视频，读取${inputDir}中视频帧`);
+      this.frame_track_param.track_logs.unshift(`开始生成视频，读取${inputDir}中视频帧`);
       this.$http.post(baseURL+'/track_frame',
           {input_dir: inputDir, output_dir: outputDir, thres: thres, gen_video: gen_video})
           .then(response=>{
@@ -117,7 +119,7 @@ export default {
           self.frame_track_param.track_logs = [];
           for (let r_index in logs){
             self.frame_track_param.track_logs.unshift(logs[r_index]);
-            if (logs[r_index].contains('End')){
+            if (logs[r_index].indexOf('End') !== -1){
               self.$message.success('跟踪完成!');
               return;
             }

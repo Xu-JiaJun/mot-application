@@ -125,7 +125,7 @@ export default {
           self.video_track_param.track_logs = [];
           for (let r_index in logs){
             self.video_track_param.track_logs.unshift(logs[r_index])
-            if (logs[r_index].contains('End')){
+            if (logs[r_index].indexOf('End') !== -1){
               self.$message.success('跟踪完成!');
               return;
             }
