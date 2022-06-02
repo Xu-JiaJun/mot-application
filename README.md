@@ -5,6 +5,7 @@
 > Vue: 2.5.16  
 > ElementUI: 2.15.8  
 > Axios: 0.18.0  
+> 算法后端项目地址：[MyFairMOT](https://github.com/Xu-JiaJun/FairMOT)
 
 #### Build Setup
 
